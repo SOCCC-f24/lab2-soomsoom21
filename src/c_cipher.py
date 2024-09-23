@@ -7,8 +7,9 @@ def encrypt(email="abc012"):
 
     Args:
         email (str): The email string to encrypt, expected to be 6 characters long, with the first 3 characters as letters and the last 3 as digits.
+ 
     Returns:
-        str" jThe encryted email, or an error message if validation fails.   
+        str: The encryted email, or an error message if validation fails.   
     """
     output = "" 
     len_flag = len(email) != 6 # Check if the length is exactly 6
@@ -18,14 +19,13 @@ def encrypt(email="abc012"):
     #     A = email[:3] (check first half)
     #     B = email[3:] (check second half)
     #     enum_flag = A or B
-    anum_flag = email[:3] != 'abc' or email[3:] != '012' 
 
     if len_flag:                         # NOTE: here we provide input validation on length
         output = "Length check failed\nEmail must be 6 characters long."
         logging.info(output)
         return output        
     if anum_flag:                        # NOTE: here we provide input validation on alpha/num
-        output = "Alpha-num check failed\nEmail must have 3 letters followed by 3 digits."
+        output = "Alpha-numeric check failed\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
 
