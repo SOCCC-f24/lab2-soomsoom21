@@ -3,17 +3,16 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
     """
-    TODO: What is the objective? 
+    Encrypt the email by shifting 3 letters up by 3 in the ASCII table.
 
     Args:
-        TODO: what arguments and data types are expected? (i.e., email)
-
+        email (str): The email string to encrypt, expected to be 6 characters long, with the first 3 characters as letters and the last 3 as digits.
     Returns:
-        TODO: what varibale and data types are being returned?   
+        str" jThe encryted email, or an error message if validation fails.   
     """
     output = "" 
-    len_flag = len(email) != 6
-    # TODO: fix line below and, implement functionality rather than literals
+    len_flag = len(email) != 6 # Check if the length is exactly 6
+    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric
     # keep all updates in the anum_flag (bool) variable
     # i.e., 
     #     A = email[:3] (check first half)
@@ -22,26 +21,23 @@ def encrypt(email="abc012"):
     anum_flag = email[:3] != 'abc' or email[3:] != '012' 
 
     if len_flag:                         # NOTE: here we provide input validation on length
-        output = "Length check failed\n"
-        output += "Email must be 6 characters long."
+        output = "Length check failed\nEmail must be 6 characters long."
         logging.info(output)
         return output        
     if anum_flag:                        # NOTE: here we provide input validation on alpha/num
-        output = "alpha num check failed\n"
-        output += "Email must have 3 letters followed by 3 digits."
+        output = "Alpha-num check failed\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
+
+    # Process email string into a list of characters
+    email_lst = list(email)
         
-    # TODO: fix line below, process our string into a list
-    email_lst = ["a", "b", "c", "0", "1", "2"]
-        
-    # TODO: complete line(s) below, convert EACH new element into a string
+    # Shift first 3 characters (letters) up by 3 in the ASCII table
     new_ascii = ord(email_lst[0]) + 3    # NOTE: here we extract and update element at 0 
     email_lst[0] = chr(new_ascii)        # NOTE: here we convert our ASCII into string
         
     # TODO: fix line below, convert list into a string
-    email_str = "dbc012"
-
+    email_str = ''.join(email_lst)
     # keep all updates in the retVal (str) variablei
     # i.e.,
     #    email_str = " some string updates here "
@@ -52,17 +48,17 @@ def encrypt(email="abc012"):
 
 def decrypt(email="def345"):
     """
-    TODO: What is the objective? 
+    Decrypt the email by shifting first 3 letters down by 3 in the ASCII table 
 
     Args:
-        TODO: what arguments and data types are expected? (i.e., email)
-
+        email (str): The email string to decrypt, expected to be 6 characters long, with the first 3 letters 3 characters as letters and the 3 digits 3 as digits.
     Returns:
-        TODO: what varibale and data types are being returned?   
+        str: The decrypted email, or an error message if validation fails.   
     """
     # input validation
     output = "" 
-    len_flag = len(email) != 6
+    len_flag = len(email != 6 #Check if the length is exactly 6 
+    anum_flag = not (email[:3].isalpha and email[3:].isdigit()) # Check alphanumeric
     # TODO: fix line below and, implement functionality rather than literals
     # keep all updates in the anum_flag (bool) variable
     # i.e., 
@@ -72,22 +68,23 @@ def decrypt(email="def345"):
     anum_flag = email[:3] != 'def' or email[3:] != '345' 
 
     if len_flag:                         # NOTE: here we provide input validation on length
-        output = "Length check failed\n"
-        output += "Email must be 6 characters long."
+        output = "Length check failed\n"Email must be 6 characters long."
         logging.info(output)
         return output        
     if anum_flag:                        # NOTE: here we provide input validation on alpha/num
-        output = "alpha num check failed\n"
-        output += "Email must have 3 letters followed by 3 digits."
+        output = "Alpha num check failed\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output   
 
-    # TODO: apply the encrypt pseudocode but shift down 3
+    # Process email string into a list of characters
+    email_lst = list(email) 
     
-    # keep all updates in the retVal (str) variablei
-    # i.e.,
-    #    email_str = " some string updates here "
-    #    email_1 = email_str.strip()
-    #    retVal = email_1
+    # Shift first 3 characters down by 3 in the ASCII table 
+   for i in range(3):
+       email_lst[i] = chr(ord(email_lst[i] - 30
+    
+    #Convert list back into a string
+    email_str = '',join(email_lst)
+ 
     retVal = "aef345"
     return retVal
