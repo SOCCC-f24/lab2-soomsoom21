@@ -26,16 +26,16 @@ def encrypt(email="abc012"):
         logging.info(output)
         return output        
     if anum_flag:                        # Input validation on alphanumeric format
-        output == "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
+        output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
 
     # Process email string into a list of characters
-    email_lst = list(email)
+    email_str = ''.join(email_lst)
         
     # Shift first 3 characters (letters) up by 3 in the ASCII table
     for i in range(3):    # NOTE: here we extract and update element at 0 
-        email_lst[0] = chr(email_lst[i] + 3)        # NOTE: here we convert our ASCII into string
+        email_lst[0] = chr(ord(email_lst[i]) - 3)        # NOTE: here we convert our ASCII into string
         
     # Convert list back into a string
     email_str = ''.join(email_lst)
@@ -54,8 +54,8 @@ def decrypt(email="def345"):
     output = "" 
     
     # Input Validation
-    len_flag = len(email != 6 #Check if the length is exactly 6 
-    anum_flag = not (email[:3].isalpha and email[3:].isdigit()) # Check alphanumeric
+    len_flag = len(email != 6) #Check if the length is exactly 6 
+    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric
     # TODO: fix line below and, implement functionality rather than literals
     # keep all updates in the anum_flag (bool) variable
     # i.e., 
@@ -76,7 +76,7 @@ def decrypt(email="def345"):
     
     # Shift first 3 characters down by 3 in the ASCII table 
     for i in range(3):
-       email_lst[i] = chr(ord(email_lst[i]) - 3)
+       email_lst[i] = chr(ord(email_lst[i]) + 3)
     
     #Convert list back into a string
     email_str = ''.join(email_lst)
