@@ -26,7 +26,7 @@ def encrypt(email="abc012"):
         logging.info(output)
         return output        
     if anum_flag:                        # Input validation on alphanumeric format
-        output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
+        output == "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
 
