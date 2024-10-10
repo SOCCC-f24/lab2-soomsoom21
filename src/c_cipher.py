@@ -67,7 +67,7 @@ def decrypt(email="def345"):
     for i in range(3):
        email_lst[i] = chr(ord(email_lst[i]) - 3)  #Shift letters down by 3
     
-    #Convert list back into a string
+    # Convert list back into a string
     email_str = ''.join(email_lst)
     return email_str
 
