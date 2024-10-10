@@ -14,33 +14,27 @@ def encrypt(email="abc012"):
     output = "" 
     # Input Validation
     len_flag = len(email) != 6 # Check if the length is exactly 6
-    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric
-    # keep all updates in the anum_flag (bool) variable
-    # i.e., 
-    #     A = email[:3] (check first half)
-    #     B = email[3:] (check second half)
-    #     enum_flag = A or B
-
-    if len_flag:                         # Input validation on length
+    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric format
+   
+    if len_flag:                         
         output = "Length check failed.\nEmail must be 6 characters long."
         logging.info(output)
         return output        
-    if anum_flag:                        # Input validation on alphanumeric format
+    if anum_flag:                       
         output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
 
     # Process email string into a list of characters
-    email_str = ''.join(email_lst)
+    email_lst = list(email)
         
     # Shift first 3 characters (letters) up by 3 in the ASCII table
-    for i in range(3):    # NOTE: here we extract and update element at 0 
-        email_lst[0] = chr(ord(email_lst[i]) - 3)        # NOTE: here we convert our ASCII into string
+    for i in range(3):     
+        email_lst[i] = chr(ord(email_lst[i]) + 3)  # Shift letter up by 3
         
     # Convert list back into a string
     email_str = ''.join(email_lst)
-    retVal = email_str
-    return retVal 
+    return email_str
 
 def decrypt(email="def345"):
     """
@@ -54,19 +48,14 @@ def decrypt(email="def345"):
     output = "" 
     
     # Input Validation
-    len_flag = len(email != 6) #Check if the length is exactly 6 
-    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric
-    # TODO: fix line below and, implement functionality rather than literals
-    # keep all updates in the anum_flag (bool) variable
-    # i.e., 
-    #     A = email[:3] (check first half)
-    #     B = email[3:] (check second half)
-    #     enum_flag = A or B
-    if len_flag:  # Input validation on length
+    len_flag = len(email != 6 #Check if the length is exactly 6 
+    anum_flag = not (email[:3].isalpha() and email[3:].isdigit()) # Check alphanumeric format
+  
+    if len_flag:
         output = "Length check failed.\nEmail must be 6 characters long."
         logging.info(output)
         return output        
-    if anum_flag: # Input validation on alphanumeric format
+    if anum_flag: 
         output = "Alpha num check failed.\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output   
@@ -74,11 +63,11 @@ def decrypt(email="def345"):
     # Process email string into a list of characters
     email_lst = list(email) 
     
-    # Shift first 3 characters down by 3 in the ASCII table 
+    # Shift first 3 characters (letters) down by 3 in the ASCII table 
     for i in range(3):
-       email_lst[i] = chr(ord(email_lst[i]) + 3)
+       email_lst[i] = chr(ord(email_lst[i]) - 3)  #Shift letters down by 3
     
     #Convert list back into a string
     email_str = ''.join(email_lst)
-    retVal = email_str
-    return retVal
+    return email_str
+
