@@ -2,7 +2,6 @@ import pytest
 import logging
 from src.c_cipher import encrypt, decrypt
 
-def test_kick_the_front_tire():
     assert encrypt() == 'dbc012'
 
 def test_encrypt_length_error(caplog):
