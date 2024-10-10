@@ -76,3 +76,16 @@ def decrypt(email="def345"):
     email_str = ''.join(email_lst)  # Fixed: use join correctly
     retVal = email_str
     return retVal
+
+def test_encrypt():
+    print(encrypt("abc012"))  # Expected: "def012"
+    print(encrypt("def345"))  # Expected: "Invalid input length"
+    print(encrypt("abc12a"))  # Expected: "Invalid alpha-numeric format"
+
+def test_decrypt():
+    print(decrypt("def345"))  # Expected: "abc345"
+    print(decrypt("abc012"))  # Expected: "Invalid input length"
+    print(decrypt("def34a"))  # Expected: "Invalid alpha-numeric format"
+
+test_encrypt()
+test_decrypt()
