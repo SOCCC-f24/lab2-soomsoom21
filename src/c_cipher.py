@@ -14,8 +14,7 @@ def encrypt(email="abc012"):
     """
     # Input validation
     if len(email) != 6:
-        return "Email must be 6 characters long."
-    
+        return "Email must be 6 characters long."    
     if not (email[:3].isalpha() and email[3:].isdigit()):
         return "Email must have 3 letters followed by 3 digits."
     
