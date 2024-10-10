@@ -59,7 +59,4 @@ def decrypt(email="def345"):
    decrypted_email = ''.join(email_lst)
     return decrypted_email
 
-# Example usage with logging
-logging.info(f"Encrypted 'abc012' -> {encrypt('abc012')}")   # Expected: def345
-logging.info(f"Decrypted 'def345' -> {decrypt('def345')}")   # Expected: abc012
-Key Changes:
+
