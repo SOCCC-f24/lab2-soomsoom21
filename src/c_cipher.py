@@ -5,7 +5,6 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 def encrypt(email="abc012"):
     """
     Encrypt the email by shifting the first 3 letters up by 3 in the ASCII table.
-
     Args:
         email (str): The email string to encrypt, expected to be 6 characters long, 
                      with the first 3 characters as letters and the last 3 as digits.
@@ -13,6 +12,7 @@ def encrypt(email="abc012"):
     Returns:
         str: The encrypted email, or an error message if validation fails.   
     """
+    
     # Input Validation for length and alphanumeric combination
     if len(email) != 6:
         return "Error: Email must be 6 characters long."
