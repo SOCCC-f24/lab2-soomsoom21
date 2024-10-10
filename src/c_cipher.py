@@ -1,76 +1,67 @@
 import logging
-# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
     """
-    Encrypt the email by shifting the first 3 letters up by 3 in the ASCII table.
+    Encrypts the email by shifting the first 3 letters up by 3 ASCII positions.
 
     Args:
-        email (str): The email string to encrypt, expected to be 6 characters long, with the first 3 characters as letters and the last 3 as digits.
+        email (str): The email string to encrypt, expected to be 6 characters long,
+                     with the first 3 characters as letters and the last 3 as digits.
  
     Returns:
-        str: The encrypted email, or an error message if validation fails.   
+        str: The encrypted email, or an error message if validation fails.
     """
-    output = "" 
-    # Input Validation
-    len_flag = len(email) != 6  # Check if the length is exactly 6
-    anum_flag = not (email[:3].isalpha() and email[3:].isdigit())  # Check alphanumeric format
-   
-    if len_flag:                         
-        output = "Length check failed.\nEmail must be 6 characters long."
-        logging.info(output)
-        return output        
-    if anum_flag:                       
-        output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
-        logging.info(output)
-        return output     
-
+    # Input validation
+    if len(email) != 6:
+        return "Email must be 6 characters long."
+    
+    if not (email[:3].isalpha() and email[3:].isdigit()):
+        return "Email must have 3 letters followed by 3 digits."
+    
     # Process email string into a list of characters
     email_lst = list(email)
+    
+    # Shift the first 3 characters (letters) up by 3 in the ASCII table
+    for i in range(3):
+        email_lst[i] = chr(ord(email_lst[i]) + 3)
         
-    # Shift first 3 characters (letters) up by 3 in the ASCII table
-    for i in range(3):     
-        email_lst[i] = chr(ord(email_lst[i]) + 3)  # Shift letter up by 3
-        
-    # Convert list back into a string
-    email_str = ''.join(email_lst)
-    return email_str
+    # Convert the list back into a string
+    encrypted_email = ''.join(email_lst)
+    
+    return encrypted_email
 
-
-def decrypt(email: str = "def345"): 
+def decrypt(email="def345"):
     """
-    Decrypt the email by shifting first 3 letters down by 3 in the ASCII table.
+    Decrypts the email by shifting the first 3 letters down by 3 ASCII positions.
 
     Args:
-        email (str): The email string to decrypt, expected to be 6 characters long, with the first 3 letters as letters and the last 3 as digits.
+        email (str): The email string to decrypt, expected to be 6 characters long,
+                     with the first 3 characters as letters and the last 3 as digits.
  
     Returns:
-        str: The decrypted email, or an error message if validation fails.   
+        str: The decrypted email, or an error message if validation fails.
     """
-    output = "" 
+    # Input validation
+    if len(email) != 6:
+        return "Email must be 6 characters long."
     
-    # Input Validation
-    len_flag = len(email) != 6  # Check if the length is exactly 6
-    anum_flag = not (email[:3].isalpha() and email[3:].isdigit())  # Check alphanumeric format
-  
-    if len_flag:
-        output = "Length check failed.\nEmail must be 6 characters long."
-        logging.info(output)
-        return output        
-    if anum_flag: 
-        output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
-        logging.info(output)
-        return output   
-
+    if not (email[:3].isalpha() and email[3:].isdigit()):
+        return "Email must have 3 letters followed by 3 digits."
+    
     # Process email string into a list of characters
-    email_lst = list(email) 
+    email_lst = list(email)
     
-    # Shift first 3 characters (letters) down by 3 in the ASCII table
+    # Shift the first 3 characters (letters) down by 3 in the ASCII table
     for i in range(3):
-        email_lst[i] = chr(ord(email_lst[i]) - 3)  # Shift letters down by 3
+        email_lst[i] = chr(ord(email_lst[i]) - 3)
+        
+    # Convert the list back into a string
+    decrypted_email = ''.join(email_lst)
     
-    # Convert list back into a string
-    email_str = ''.join(email_lst)
-    return email_str
+    return decrypted_email
+
+# Example usage
+logging.info(f"Encrypted 'abc012' -> {encrypt('abc012')}")   # Expected: def345
+logging.info(f"Decrypted 'def345' -> {decrypt('def345')}")   # Expected: abc012
 
