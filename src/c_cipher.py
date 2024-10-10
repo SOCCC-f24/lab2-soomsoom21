@@ -1,4 +1,5 @@
 import logging
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
@@ -37,7 +38,7 @@ def encrypt(email="abc012"):
     return email_str
 
 
-def decrypt(email="def345"):
+def decrypt(email: str = "def345"): 
     """
     Decrypt the email by shifting first 3 letters down by 3 in the ASCII table.
 
