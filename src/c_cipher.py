@@ -84,6 +84,6 @@ def decrypt(email="def345"):
        email_lst[i] = chr(ord(email_lst[i] - 3)
     
     #Convert list back into a string
-    email_str = '',join(email_lst)
+    email_str = ''.join(email_lst)
     retVal = email_str
     return retVal
