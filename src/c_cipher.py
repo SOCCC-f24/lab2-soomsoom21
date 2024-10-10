@@ -6,13 +6,14 @@ def encrypt(email="abc012"):
     Encrypt the email by shifting the first 3 letters up by 3 in the ASCII table.
 
     Args:
-        email (str): The email string to encrypt, expected to be 6 characters long, with the first 3 letters as letters and the last 3 as digits.
+        email (str): The email string to encrypt, expected to be 6 characters long, with the first 3 characters as letters and the last 3 as digits.
  
     Returns:
         str: The encrypted email, or an error message if validation fails.   
     """
     output = "" 
-    len_flag = len(email) != 6
+    # Input Validation
+    len_flag = len(email) != 6  # Check if the length is exactly 6
     anum_flag = not (email[:3].isalpha() and email[3:].isdigit())  # Check alphanumeric format
 
     if len_flag:
@@ -23,7 +24,7 @@ def encrypt(email="abc012"):
         output = "Alpha-numeric check failed.\nEmail must have 3 letters followed by 3 digits."
         logging.info(output)
         return output     
-        
+
     # Process email string into a list of characters
     email_lst = list(email)
         
@@ -41,12 +42,13 @@ def decrypt(email="def345"):
 
     Args:
         email (str): The email string to decrypt, expected to be 6 characters long, with the first 3 letters as letters and the last 3 as digits.
- 
     Returns:
         str: The decrypted email, or an error message if validation fails.   
     """
     output = "" 
-    len_flag = len(email) != 6
+    
+    # Input Validation
+    len_flag = len(email) != 6  # Check if the length is exactly 6
     anum_flag = not (email[:3].isalpha() and email[3:].isdigit())  # Check alphanumeric format
 
     if len_flag:
@@ -68,11 +70,3 @@ def decrypt(email="def345"):
     # Convert list back into a string
     email_str = ''.join(email_lst)
     return email_str
-
-# Test Cases
-logging.info(f"Encrypted 'abc012' -> {encrypt('abc012')}")   # Expected: def345
-logging.info(f"Decrypted 'def345' -> {decrypt('def345')}")   # Expected: abc012
-logging.info(f"Invalid input 'abcd1234' -> {encrypt('abcd1234')}")  # Expected: error
-logging.info(f"Invalid input 'abc1@3' -> {encrypt('abc1@3')}")  # Expected: error
-logging.info(f"Empty input -> {encrypt('')}")  # Expected: error
-
