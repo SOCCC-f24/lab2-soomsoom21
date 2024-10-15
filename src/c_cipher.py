@@ -4,7 +4,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 def encrypt(email="abc012"):
     email="abc012"
     output = "" 
-    len_flag = len(email) == 6
+    len_flag = (len(email) == 6)
     anum_flag = email[:3] != 'abc' or email[3:] != '012' 
 
     email_lst = ["a", "b", "c", "0", "1", "2"]
