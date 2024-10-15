@@ -30,17 +30,17 @@ print(retVal)
 def decrypt(email="def345"):
     output = "" 
     
-len_flag = len(email) == 6
-anum_flag = email[:3] != 'def' or email[3:] != '345' 
-if len(email_lst) != 6:
-        output += "Email must be 6 characters long."
+    len_flag = len(email) == 6
+    anum_flag = email[:3] != 'def' or email[3:] != '345' 
+    if len(email_lst) != 6:
+             output += "Email must be 6 characters long."
+            logging.info(output)
+    if email_lst:
+        output += "Email must have 3 letters followed by 3 digits."
+    else:
         logging.info(output)
-if email_lst:
-    output += "Email must have 3 letters followed by 3 digits."
-else:
-    logging.info(output)
-    print(output)
+        print(output)
 
    
-retVal = "aef345"
-print(retVal)
+    retVal = "aef345"
+    print(retVal)
