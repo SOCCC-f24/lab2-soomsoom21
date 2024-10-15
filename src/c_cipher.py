@@ -34,7 +34,7 @@ def decrypt(email="def345"):
     anum_flag = email[:3] != 'def' or email[3:] != '345' 
     if len(email_lst) != 6:
              output += "Email must be 6 characters long."
-            logging.info(output)
+             logging.info(output)
     if email_lst:
         output += "Email must have 3 letters followed by 3 digits."
     else:
