@@ -27,7 +27,7 @@ email_str = "dbc012"
 retVal = email_str
 print(retVal) 
 
-def decrypt(email="def345"):
+def decrypt(email="def345"): # Shift first 3 characters down by 3 in the ASCII table
     output = "" 
     
     len_flag = len(email) == 6
