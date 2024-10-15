@@ -14,7 +14,7 @@ def encrypt(email="abc012"):
     if len(email_lst) != 6:
         output += "Email must be 6 characters long."
         logging.info(output)
-    if email_lst:
+    if anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
     else:
         logging.info(output)
@@ -32,10 +32,10 @@ def decrypt(email="def345"): # Shift first 3 characters down by 3 in the ASCII t
     
     len_flag = len(email) == 6
     anum_flag = email[:3] != 'def' or email[3:] != '345' 
-    if len(email_lst) != 6:
+    if len_flag:
              output += "Email must be 6 characters long."
              logging.info(output)
-    if email_lst:
+    if anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
     else:
         logging.info(output)
