@@ -44,7 +44,7 @@ def decrypt(email="def345"): # Shift first 3 characters down by 3 in the ASCII t
     output = "" 
     
     len_flag = len(email) == 6
-    anum_flag = email[:3] != 'def' and email[3:] != '345' 
+    anum_flag = email.isalpha[:3] != 'def' and email.isdecimal[3:] != '345' 
     if len_flag:
              output += "Length check failed"
              logging.info(output)
