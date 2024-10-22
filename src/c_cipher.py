@@ -2,7 +2,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
-    email="abc012"
+   ''' email="abc012" '''
     output = "" 
     len_flag = (len(email) != 6)
     anum_flag = email[:3].isalpha() and email[3:] != '012' 
@@ -35,9 +35,7 @@ def encrypt(email="abc012"):
         logging.info(output)
         print(output)     
     
-      
-    # TODO: fix line below, convert list into a string
-email_str = "dbc012"
+        email_str = "dbc012"
    
 retVal = email_str
 print(retVal) 
@@ -46,16 +44,14 @@ def decrypt(email="def345"): # Shift first 3 characters down by 3 in the ASCII t
     output = "" 
     
     len_flag = len(email) == 6
-    anum_flag = email[:3] != 'def' or email[3:] != '345' 
+    anum_flag = email[:3] != 'def' and email[3:] != '345' 
     if len_flag:
              output += "Length check failed"
              logging.info(output)
-    if anum_flag:
-        output += "Email must have 3 letters followed by 3 digits."
+    if anum_flag: isalpha() and isdecimal()
     else:
         logging.info(output)
         print(output)
 
-   
     retVal = "aef345"
     print(retVal)
