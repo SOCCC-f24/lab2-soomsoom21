@@ -26,12 +26,12 @@ def encrypt(email="abc012"):
     new_ascii = ord(email_lst[5]) + 3    
     email_lst[5] = chr(new_ascii)  
     
-    if len(email_lst) != 6:
+if len(email_lst) != 6:
         output += "Length check failed"
         logging.info(output)
-    if anum_flag isalpha() and isdecimal():
+if anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
-    else:
+else:
         logging.info(output)
         print(output)     
     
