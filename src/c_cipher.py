@@ -44,11 +44,23 @@ def decrypt(email="def345"): # Shift first 3 characters down by 3 in the ASCII t
     output = "" 
     
     len_flag = len(email) == 6
-    anum_flag = email.isalpha[:3] != 'def' and email.isdecimal[3:] != '345' 
+    anum_flag = email.isalpha() and email.isdecimal[3:] != '345' 
     if len_flag:
              output += "Length check failed"
              logging.info(output)
     if anum_flag: isalpha() and isdecimal()
+    new_ascii = ord(email_lst[0]) - 3    
+    email_lst[0] = chr(new_ascii)    
+    new_ascii = ord(email_lst[1]) - 3    
+    email_lst[1] = chr(new_ascii)  
+    new_ascii = ord(email_lst[2]) - 3    
+    email_lst[2] = chr(new_ascii) 
+    new_ascii = ord(email_lst[3]) - 3    
+    email_lst[3] = chr(new_ascii)  
+    new_ascii = ord(email_lst[4]) - 3    
+    email_lst[4] = chr(new_ascii)  
+    new_ascii = ord(email_lst[5]) - 3    
+    email_lst[5] = chr(new_ascii)  
     else:
         logging.info(output)
         print(output)
