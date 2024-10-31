@@ -33,12 +33,12 @@ def encrypt(email="abc012"):
    new_ascii = ord(email_lst[5]) + 3
    email_lst[5] = chr(new_ascii)
 
-   if len_flag:
+if len_flag:
         output += "Length check failed"
         logging.info(output)
-   if not anum_flag:
+if not anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
-   else:
+else:
         logging.info(output)
         print(output)     
 
