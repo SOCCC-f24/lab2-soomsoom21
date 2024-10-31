@@ -20,19 +20,19 @@ def encrypt(email="abc012"):
     #(2) split at space and set to email_lst
     email_lst = e_space.split(" ")
     
-    new_ascii = ord(email_lst[0]) + 3    
-    email_lst[0] = chr(new_ascii)    
-    new_ascii = ord(email_lst[1]) + 3    
-    email_lst[1] = chr(new_ascii)  
-    new_ascii = ord(email_lst[2]) + 3    
-    email_lst[2] = chr(new_ascii) 
-    new_ascii = ord(email_lst[3]) + 3    
-    email_lst[3] = chr(new_ascii)  
-    new_ascii = ord(email_lst[4]) + 3    
-    email_lst[4] = chr(new_ascii)  
-    new_ascii = ord(email_lst[5]) + 3    
-    email_lst[5] = chr(new_ascii)  
-    
+   new_ascii = ord(email_lst[0]) + 3
+   email_lst[0] = chr(new_ascii)
+   new_ascii = ord(email_lst[1]) + 3
+   email_lst[1] = chr(new_ascii)
+   new_ascii = ord(email_lst[2]) + 3
+   email_lst[2] = chr(new_ascii)
+   new_ascii = ord(email_lst[3]) + 3
+   email_lst[3] = chr(new_ascii)
+   new_ascii = ord(email_lst[4]) + 3
+   email_lst[4] = chr(new_ascii)
+   new_ascii = ord(email_lst[5]) + 3
+   email_lst[5] = chr(new_ascii)
+
    if len_flag:
         output += "Length check failed"
         logging.info(output)
