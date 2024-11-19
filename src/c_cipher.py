@@ -10,7 +10,6 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
-   ''' email="abc012" '''
     output = "" 
     len_flag = (len(email) != 6)
     anum_flag = email[3:].isdeccimal() and email[3:] != '012' 
@@ -57,23 +56,29 @@ def decrypt(email): # Shift first 3 characters down by 3 in the ASCII table
     if len_flag:
              output += "Length check failed"
              logging.info(output)
-    if not anum_flag: isalpha() and isdecimal()
-    new_ascii = ord(email_lst[0]) - 3    
-    email_lst[0] = chr(new_ascii)    
-    new_ascii = ord(email_lst[1]) - 3    
-    email_lst[1] = chr(new_ascii)  
-    new_ascii = ord(email_lst[2]) - 3    
-    email_lst[2] = chr(new_ascii) 
-    new_ascii = ord(email_lst[3]) - 3    
-    email_lst[3] = chr(new_ascii)  
-    new_ascii = ord(email_lst[4]) - 3    
-    email_lst[4] = chr(new_ascii)  
-    new_ascii = ord(email_lst[5]) - 3    
-    email_lst[5] = chr(new_ascii)  
+    if not anum_flag: isalpha() and isdecimal():
+    
+   new_ascii = ord(email_lst[0]) - 3    
+   email_lst[0] = chr(new_ascii)    
+   new_ascii = ord(email_lst[1]) - 3    
+   email_lst[1] = chr(new_ascii)  
+   new_ascii = ord(email_lst[2]) - 3    
+   email_lst[2] = chr(new_ascii) 
+   new_ascii = ord(email_lst[3]) - 3    
+   email_lst[3] = chr(new_ascii)  
+   new_ascii = ord(email_lst[4]) - 3    
+   email_lst[4] = chr(new_ascii)  
+   new_ascii = ord(email_lst[5]) - 3    
+   email_lst[5] = chr(new_ascii)  
 
+   if not anum_flag:
+      output += ("alpha num check /n")
+      output += 'Email must have 3 letters followed by 3 digits.'
+      logging.info(output)
+   return output
+else:
+   output += "".join(email_lst)
+   return output
+   
 
-        logging.info(output)
-        print(output)
-
-    retVal = ".join(email_lst)
-    return retVAl
+   
