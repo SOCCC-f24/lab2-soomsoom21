@@ -18,7 +18,7 @@ def encrypt(email="abc012"):
     
     output = "" 
     len_flag = (len(email) != 6)
-    anum_flag = email[3:].isdecimal() and email[3:] != '012' 
+    anum_flag = (email[:3].isalpha() and email[3:].isdecimal())
     # email_lst = ["a", "b", "c", "0", "1", "2"] 
     # (1) add space to email
     #(2) split at space and set to email_lst
@@ -39,7 +39,7 @@ def encrypt(email="abc012"):
     for i in range(len(email_lst)):
         # len of email_lst sets a range
         
-        new_ascii = ord(email_lst[i]) - 3
+        new_ascii = ord(email_lst[i]) + 3
         # this variable sets a new ascii with the value of the decrypted
         # character
 
@@ -107,7 +107,7 @@ def decrypt(email="def345"):
     # first part though.
     # Try this instead:
 
-    anum_flag = not (email[:3].isalpha() and email[3:].isdecimal())
+    anum_flag = (email[:3].isalpha() and email[3:].isdecimal())
 
     # this use checks both the first and last parts of the email to
     # ensure it's valid.
