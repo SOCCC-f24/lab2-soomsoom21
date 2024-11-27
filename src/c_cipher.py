@@ -1,105 +1,188 @@
+"""
+
+Name: Sophia Weinert
+Course: CSC 138
+Date: 10/24/2024
+Class Section: EG
+"""
+
 import logging
+
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 def encrypt(email="abc012"):
-    """
-    TODO: What is the objective? 
 
-    Args:
-        TODO: what arguments and data types are expected? (i.e., email)
-
-    Returns:
-        TODO: what varibale and data types are being returned?   
-    """
+    # this function works now
+    # check decrypt function for more changes made to improve the code
+    # everything is explained there.
+    
     output = "" 
-    len_flag = len(email) != 6
-    # TODO: fix line below and, implement functionality rather than literals
-    # keep all updates in the anum_flag (bool) variable
-    # i.e., 
-    A = email[:3] # (check first half)
-    B = email[3:] # (check second half)
-    #     enum_flag = A or B
-    anum_flag = not (A.isalpha() and B.isdecimal())
-
-    if len_flag:                         # NOTE: here we provide input validation on length
-        output = "Length check failed\n"
-        output += "Email must be 6 characters long."
+    len_flag = (len(email) != 6)
+    anum_flag = email[3:].isdecimal() and email[3:] != '012' 
+    # email_lst = ["a", "b", "c", "0", "1", "2"] 
+    # (1) add space to email
+    e_space = " ".join (email) 
+    #(2) split at space and set to email_lst
+    email_lst = e_space.split(" ")
+    
+    new_ascii = ord(email_lst[0]) + 3
+    email_lst[0] = chr(new_ascii)
+    new_ascii = ord(email_lst[1]) + 3
+    email_lst[1] = chr(new_ascii)
+    new_ascii = ord(email_lst[2]) + 3
+    email_lst[2] = chr(new_ascii)
+    new_ascii = ord(email_lst[3]) + 3
+    email_lst[3] = chr(new_ascii)
+    new_ascii = ord(email_lst[4]) + 3
+    email_lst[4] = chr(new_ascii)
+    new_ascii = ord(email_lst[5]) + 3
+    email_lst[5] = chr(new_ascii)
+    
+    if len_flag:
+        output += "Length check failed"
         logging.info(output)
-        return output        
-    if anum_flag:                        # NOTE: here we provide input validation on alpha/num
-        output = "alpha num check failed\n"
+        
+    if not anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
+    
+    else:
         logging.info(output)
-        return output     
-
-    # TODO: fix line below, process our string into a list
-    email_lst = [*email]
-
-    # TODO: complete line(s) below, convert EACH new element into a string
-
-    for i in range(len(email_lst)):
-        new_ascii = ord(email_lst[i]) + 3    # NOTE: here we extract and update element at 0 
-        email_lst[i] = chr(new_ascii)        # NOTE: here we convert our ASCII into string
-
-    # TODO: fix line below, convert list into a string
+        print(output)     
+        
     email_str = "".join(email_lst)
-
-    # keep all updates in the retVal (str) variable
-    # i.e.,
-    #    email_str = " some string updates here "
-    #    email_1 = email_str.strip()
-    #    retVal = email_1
+    
     retVal = email_str
-    return retVal 
+    return(retVal) 
+
+"""
+def decrypt(email="def345"): 
+    # Shift first 3 characters down by 3 in the ASCII table
+    # Shift 4  e_lst = email.split
+    output = "" 
+    e_space = ''.join(email) 
+    e_lst = e_space.split()
+
+    email_lst = e_space.split(" ")
+    
+    len_flag = len(email) != 6
+    anum_flag = email[:3].isalpha() and email.isdecimal[3:].isdecimal() 
+    
+    if len_flag:
+        output += "Length check failed"
+        logging.info(output)
+        
+    if not anum_flag:
+        new_ascii = ord(email_lst[0]) - 3
+        email_lst[0] = chr(new_ascii)
+        new_ascii = ord(email_lst[1]) - 3    
+        email_lst[1] = chr(new_ascii)  
+        new_ascii = ord(email_lst[2]) - 3    
+        email_lst[2] = chr(new_ascii) 
+        new_ascii = ord(email_lst[3]) - 3    
+        email_lst[3] = chr(new_ascii)  
+        new_ascii = ord(email_lst[4]) - 3    
+        email_lst[4] = chr(new_ascii)  
+        new_ascii = ord(email_lst[5]) - 3    
+        email_lst[5] = chr(new_ascii)  
+
+    logging.info(output)
+    print(output)
+
+    retVal = "".join(email_lst)
+    return retVal
+
+Going to comment out all of this decrypt function
+Since decrypt is the same as encrypt, it should be the exact same
+for simplicity. The replacement below is the encrypt function working in reverse.
+"""
 
 def decrypt(email="def345"):
-    """
-    TODO: What is the objective? 
-
-    Args:
-        TODO: what arguments and data types are expected? (i.e., email)
-
-    Returns:
-        TODO: what varibale and data types are being returned?   
-    """
-    # input validation
     output = "" 
-    len_flag = len(email) != 6
-    # TODO: fix line below and, implement functionality rather than literals
-    # keep all updates in the anum_flag (bool) variable
-    # i.e., 
-    A = email[:3] # (check first half)
-    B = email[3:] # (check second half)
-    #     enum_flag = A or B
-    anum_flag = not (A.isalpha() and B.isdecimal()) 
+    len_flag = (len(email) != 6)
+    
+    # anum_flag = email[3:].isdecimal() and email[3:] != '012'
+    # 
+    # line 97 doesn't work correctly as a flag. It should check both
+    # parts of the email and see if they are alphabetical and numeric
+    # respectively. This use of anum_flag checks if the last part of 
+    # the email is a decimal and doesn't equal 012, nothing about the
+    # first part though.
+    # Try this instead:
 
-    if len_flag:                         # NOTE: here we provide input validation on length
-        output = "Length check failed\n"
-        output += "Email must be 6 characters long."
+    anum_flag = not (email[:3].isalpha() and email[3:].isdecimal())
+
+    # this use checks both the first and last parts of the email to
+    # ensure it's valid.
+    
+
+    if len_flag:
+        output += "Length check failed"
         logging.info(output)
-        return output        
-    if anum_flag:                        # NOTE: here we provide input validation on alpha/num
-        output = "alpha num check failed\n"
+
+    if not anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
-        logging.info(output)
-        return output   
 
-    # TODO: apply the encrypt pseudocode but shift down 3
+    else:
+        logging.info(output)
+        print(output)
+        
+    # Check line 172
+
+    
+    # e_space = " ".join (email) 
+    
+    # email_lst = e_space.split(" ")
+    # These aren't needed in order to extract each individual element
+    # of the string. Although it works you could also use [*email]
+    # which does the same thing. (learned that online lmao)
 
     email_lst = [*email]
 
-    for i in range(len(email_lst)):
-        new_ascii = ord(email_lst[i]) - 3    # NOTE: here we extract and update element at 0 
-        email_lst[i] = chr(new_ascii)        # NOTE: here we convert our ASCII into string
+    """
+    new_ascii = ord(email_lst[0]) + 3
+    email_lst[0] = chr(new_ascii)
+    new_ascii = ord(email_lst[1]) + 3
+    email_lst[1] = chr(new_ascii)
+    new_ascii = ord(email_lst[2]) + 3
+    email_lst[2] = chr(new_ascii)
+    new_ascii = ord(email_lst[3]) + 3
+    email_lst[3] = chr(new_ascii)
+    new_ascii = ord(email_lst[4]) + 3
+    email_lst[4] = chr(new_ascii)
+    new_ascii = ord(email_lst[5]) + 3
+    email_lst[5] = chr(new_ascii)
 
-    # TODO: fix line below, convert list into a string
+    Instead of using multiple statements over and over again
+    use a for loop.
+    """
+
+    for i in range(len(email_lst)):
+        # len of email_lst sets a range
+        
+        new_ascii = ord(email_lst[i]) - 3
+        # this variable sets a new ascii with the value of the decrypted
+        # character
+
+        email_lst[i] = chr(new_ascii)
+        # update email_lst with the new decrypted character
+    
+    """
+    if len_flag:
+        output += "Length check failed"
+        logging.info(output)
+
+    if not anum_flag:
+        output += "Email must have 3 letters followed by 3 digits."
+
+    else:
+        logging.info(output)
+        print(output)
+
+    You should move this to before the manipulation of the email
+    this way incase theres a weird input it doesn't crash the code.
+    """
+    
     email_str = "".join(email_lst)
 
-    # keep all updates in the retVal (str) variablei
-    # i.e.,
-    #    email_str = " some string updates here "
-    #    email_1 = email_str.strip()
-    #    retVal = email_1
-    # run 1
     retVal = email_str
-    return retVal
+    return(retVal) 
