@@ -32,8 +32,8 @@ def encrypt(email="abc012"):
         output += "Email must have 3 letters followed by 3 digits."
         logging.info(output)
         return output
-        
-    email_lst = e_space.split(" ")
+
+    email_lst = [*email]
     
     for i in range(len(email_lst)):
         new_ascii = ord(email_lst[i]) + 3
