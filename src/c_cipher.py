@@ -42,7 +42,7 @@ def encrypt(email="abc012"):
         output += "Length check failed"
         logging.info(output)
         
-    if not anum_flag:
+    if anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
     
     else:
@@ -119,7 +119,7 @@ def decrypt(email="def345"):
         output += "Length check failed"
         logging.info(output)
 
-    if not anum_flag:
+    if anum_flag:
         output += "Email must have 3 letters followed by 3 digits."
 
     else:
