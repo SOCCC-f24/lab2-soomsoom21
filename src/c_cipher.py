@@ -15,7 +15,7 @@ def encrypt(email="abc012"):
     # check decrypt function for more changes made to improve the code
     # everything is explained there.
     
-    output = "" 
+    output = " " 
     len_flag = (len(email) != 6)
     anum_flag = email[3:].isdeccimal() and email[3:] != '012' 
     # email_lst = ["a", "b", "c", "0", "1", "2"]
@@ -47,7 +47,7 @@ def encrypt(email="abc012"):
         logging.info(output)
         print(output)     
 
-        email_str = ".join(email_lst)
+        email_str = "".join(email_lst)
    
         retVal = email_str
         print(retVal) 
