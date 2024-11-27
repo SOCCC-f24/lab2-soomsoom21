@@ -17,11 +17,10 @@ def encrypt(email="abc012"):
     # everything is explained there.
     
     output = "" 
-    len_flag = (len(email) != 6)
-    anum_flag = email[3:].isdecimal() and email[3:] != '012' 
+    len_flag = len(email) != 6
+    anum_flag = not (email[:3].isalpha() and email[3:].isdecimal())
     # email_lst = ["a", "b", "c", "0", "1", "2"] 
     # (1) add space to email
-    e_space = " ".join (email) 
     #(2) split at space and set to email_lst
     if len_flag:
         output = "Length check failed\n"
@@ -36,23 +35,14 @@ def encrypt(email="abc012"):
         
     email_lst = e_space.split(" ")
     
-    new_ascii = ord(email_lst[0]) + 3
-    email_lst[0] = chr(new_ascii)
-    new_ascii = ord(email_lst[1]) + 3
-    email_lst[1] = chr(new_ascii)
-    new_ascii = ord(email_lst[2]) + 3
-    email_lst[2] = chr(new_ascii)
-    new_ascii = ord(email_lst[3]) + 3
-    email_lst[3] = chr(new_ascii)
-    new_ascii = ord(email_lst[4]) + 3
-    email_lst[4] = chr(new_ascii)
-    new_ascii = ord(email_lst[5]) + 3
-    email_lst[5] = chr(new_ascii)
+    for i in range(len(email_lst)):
+        new_ascii = ord(email_lst[i]) + 3
+        email_lst[i] = chr(new_ascii)
         
     email_str = "".join(email_lst)
     
     retVal = email_str
-    return(retVal) 
+    return retVal 
 
 """
 def decrypt(email="def345"): 
