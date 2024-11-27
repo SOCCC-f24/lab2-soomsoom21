@@ -23,6 +23,17 @@ def encrypt(email="abc012"):
     # (1) add space to email
     e_space = " ".join (email) 
     #(2) split at space and set to email_lst
+    if len_flag:
+        output = "Length check failed"
+        output += " Email must be 6 characters long."
+        logging.info(output)
+        
+    if not anum_flag:
+        output += "Email must have 3 letters followed by 3 digits."
+    
+    else:
+        logging.info(output)
+        print(output)     
     email_lst = e_space.split(" ")
     
     new_ascii = ord(email_lst[0]) + 3
@@ -37,17 +48,6 @@ def encrypt(email="abc012"):
     email_lst[4] = chr(new_ascii)
     new_ascii = ord(email_lst[5]) + 3
     email_lst[5] = chr(new_ascii)
-    
-    if len_flag:
-        output += "Length check failed"
-        logging.info(output)
-        
-    if not anum_flag:
-        output += "Email must have 3 letters followed by 3 digits."
-    
-    else:
-        logging.info(output)
-        print(output)     
         
     email_str = "".join(email_lst)
     
