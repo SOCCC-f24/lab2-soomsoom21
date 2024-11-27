@@ -21,33 +21,31 @@ def encrypt(email="abc012"):
     anum_flag = email[3:].isdecimal() and email[3:] != '012' 
     # email_lst = ["a", "b", "c", "0", "1", "2"] 
     # (1) add space to email
-    e_space = " ".join (email) 
     #(2) split at space and set to email_lst
-    email_lst = e_space.split(" ")
-    
-    new_ascii = ord(email_lst[0]) + 3
-    email_lst[0] = chr(new_ascii)
-    new_ascii = ord(email_lst[1]) + 3
-    email_lst[1] = chr(new_ascii)
-    new_ascii = ord(email_lst[2]) + 3
-    email_lst[2] = chr(new_ascii)
-    new_ascii = ord(email_lst[3]) + 3
-    email_lst[3] = chr(new_ascii)
-    new_ascii = ord(email_lst[4]) + 3
-    email_lst[4] = chr(new_ascii)
-    new_ascii = ord(email_lst[5]) + 3
-    email_lst[5] = chr(new_ascii)
-    
+
     if len_flag:
-        output += "Length check failed"
+        output = "Length check failed"
+        output += "Email must be 6 character long."
         logging.info(output)
-        
+        return output      
     if anum_flag:
+        output = "alpha num check failed\n"
         output += "Email must have 3 letters followed by 3 digits."
-    
-    else:
         logging.info(output)
-        print(output)     
+        return output
+
+    email_lst = [*email]
+
+    for i in range(len(email_lst)):
+        # len of email_lst sets a range
+        
+        new_ascii = ord(email_lst[i]) - 3
+        # this variable sets a new ascii with the value of the decrypted
+        # character
+
+        email_lst[i] = chr(new_ascii)
+        # update email_lst with the new decrypted character
+
         
     email_str = "".join(email_lst)
     
@@ -116,15 +114,17 @@ def decrypt(email="def345"):
     
 
     if len_flag:
-        output += "Length check failed"
+        output = "Length check failed"
+        output += "Email must be 6 character long."
         logging.info(output)
-
+        return output      
     if anum_flag:
+        output = "alpha num check failed\n"
         output += "Email must have 3 letters followed by 3 digits."
-
-    else:
         logging.info(output)
-        print(output)
+        return output
+
+    email_lst = [*email]
         
     # Check line 172
 
@@ -135,8 +135,6 @@ def decrypt(email="def345"):
     # These aren't needed in order to extract each individual element
     # of the string. Although it works you could also use [*email]
     # which does the same thing. (learned that online lmao)
-
-    email_lst = [*email]
 
     """
     new_ascii = ord(email_lst[0]) + 3
