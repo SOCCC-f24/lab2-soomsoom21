@@ -28,11 +28,12 @@ def encrypt(email="abc012"):
         output += "Email must be 6 characters long."
         logging.info(output)
         return output
-    if not anum_flag:
+    if anum_flag:
         output = "alpha num check failed\n"
         output += "Email must have 3 letters followed by 3 digits."
         logging.info(output)
         return output
+        
     email_lst = e_space.split(" ")
     
     new_ascii = ord(email_lst[0]) + 3
